@@ -11,7 +11,7 @@
 
 设计目标只有一个：**agent 写日历这件事必须可核对**。所以每条事件先出表格让人点头，写完读回来对一遍，重复执行不会写出两份。
 
-> 配套项目：[mail-to-calendar-skill](https://github.com/DAweiD1/mail-to-calendar-skill) —— 从邮箱里捞出面试、笔试、截止日期，抽成日程后交给这个 skill 写入。
+> 配套项目：[mail-skill](https://github.com/DAweiD1/mail-skill) —— 从邮箱里捞出面试、笔试、截止日期，抽成日程后交给这个 skill 写入。
 
 ## 为什么不直接用 AppleScript 或 .ics
 
