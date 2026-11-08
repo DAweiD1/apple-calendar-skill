@@ -1,0 +1,11 @@
+# 编译产物
+bin/calendar
+CalendarHelper.app/
+.build/
+*.dSYM/
+
+# 本地配置（含个人日历 id）
+config.json
+
+# macOS
+.DS_Store

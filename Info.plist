@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleIdentifier</key>
+    <string>local.skills.apple-calendar</string>
+    <key>CFBundleName</key>
+    <string>CalendarHelper</string>
+    <key>CFBundleDisplayName</key>
+    <string>日历助手</string>
+    <key>CFBundleExecutable</key>
+    <string>calendar</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSUIElement</key>
+    <true/>
+    <key>NSHumanReadableCopyright</key>
+    <string>local skill helper</string>
+    <key>NSCalendarsFullAccessUsageDescription</key>
+    <string>把你说的事件写入日历，并读回校验。</string>
+    <key>NSCalendarsUsageDescription</key>
+    <string>把你说的事件写入日历，并读回校验。</string>
+</dict>
+</plist>

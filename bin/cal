@@ -1,0 +1,33 @@
+#!/bin/bash
+# 日历工具入口。通过 LaunchServices 启动 CalendarHelper.app，
+# 让 TCC 把日历权限记在这个 helper 身上，而不是记到 DeepSeek Harness 头上
+# （主程序 Info.plist 没有 NSCalendars* 说明，裸二进制请求会被静默拒绝）。
+set -uo pipefail
+
+DIR="$(cd "$(dirname "$0")/.." && pwd)"
+APP="$DIR/CalendarHelper.app"
+OUT="$(mktemp -t dsh-cal)"
+rm -f "$OUT"
+
+if [ ! -d "$APP" ]; then
+  echo '{"ok":false,"error":"not_built","message":"CalendarHelper.app 不存在，先跑 scripts/build.sh"}'
+  exit 1
+fi
+
+# open -W 偶尔会提前返回（Unable to block on application），所以再轮询等结果文件。
+open -n -W "$APP" --args --out "$OUT" "$@" 2>/dev/null
+WAITED=0
+while [ ! -s "$OUT" ] && [ "$WAITED" -lt 240 ]; do
+  sleep 0.25
+  WAITED=$((WAITED + 1))
+done
+
+if [ -s "$OUT" ]; then
+  cat "$OUT"
+  rm -f "$OUT"
+  exit 0
+fi
+
+rm -f "$OUT"
+echo '{"ok":false,"error":"timeout","message":"CalendarHelper 60 秒内没有返回结果，可能卡在系统授权弹窗、或被拦截"}'
+exit 1
